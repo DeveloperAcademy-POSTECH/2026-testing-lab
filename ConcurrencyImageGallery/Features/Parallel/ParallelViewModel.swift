@@ -17,8 +17,13 @@ final class ParallelViewModel {
     private(set) var elapsedSeconds: Double = 0
     private(set) var errorMessage: String?
 
-    private let service = ImageService()
-    private let limit = 10
+    private let service: any ImageServing
+    private let limit: Int
+
+    init(service: any ImageServing = ImageService(), limit: Int = 10) {
+        self.service = service
+        self.limit = limit
+    }
 
     func loadImages() async {
         guard !isLoading else { return }

@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct ImageService: Sendable {
+protocol ImageServing: Sendable {
+    func fetchImageList(page: Int, limit: Int) async throws -> [PicsumImage]
+    func fetchImageData(from url: URL) async throws -> Data
+}
+
+struct ImageService: ImageServing {
     nonisolated init() {}
 
     nonisolated func fetchImageList(page: Int, limit: Int) async throws -> [PicsumImage] {

@@ -15,7 +15,13 @@ actor ImageCache {
     private(set) var missCount = 0
     private(set) var dedupedCount = 0
 
-    private let service = ImageService()
+    private let fetchImageData: @Sendable (URL) async throws -> Data
+
+    init(fetchImageData: @escaping @Sendable (URL) async throws -> Data = { url in
+        try await ImageService().fetchImageData(from: url)
+    }) {
+        self.fetchImageData = fetchImageData
+    }
 
     func image(for url: URL) async throws -> Data {
         if let cached = storage[url] {
@@ -30,7 +36,7 @@ actor ImageCache {
 
         missCount += 1
         let task = Task {
-            try await service.fetchImageData(from: url)
+            try await fetchImageData(url)
         }
         inFlight[url] = task
 
