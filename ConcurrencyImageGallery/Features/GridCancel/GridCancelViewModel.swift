@@ -15,7 +15,13 @@ final class GridCancelViewModel {
     private(set) var errorMessage: String?
     private(set) var isLoading = false
 
-    private let service = ImageService()
+    private let service: any ImageServing
+    private let pageLimit: Int
+
+    init(service: any ImageServing = ImageService(), pageLimit: Int = 30) {
+        self.service = service
+        self.pageLimit = pageLimit
+    }
 
     func loadListIfNeeded() async {
         guard images.isEmpty, !isLoading else { return }
@@ -23,8 +29,8 @@ final class GridCancelViewModel {
         defer { isLoading = false }
 
         do {
-            async let page1 = service.fetchImageList(page: 1, limit: 30)
-            async let page2 = service.fetchImageList(page: 2, limit: 30)
+            async let page1 = service.fetchImageList(page: 1, limit: pageLimit)
+            async let page2 = service.fetchImageList(page: 2, limit: pageLimit)
             let combined = try await page1 + page2
             images = combined
         } catch {

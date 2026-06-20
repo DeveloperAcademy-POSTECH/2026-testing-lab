@@ -17,8 +17,13 @@ final class SequentialViewModel {
     private(set) var elapsedSeconds: Double = 0
     private(set) var errorMessage: String?
 
-    private let service = ImageService()
-    private let limit = 10
+    private let service: any ImageServing
+    private let limit: Int
+
+    init(service: any ImageServing = ImageService(), limit: Int = 10) {
+        self.service = service
+        self.limit = limit
+    }
 
     func loadImages() async {
         guard !isLoading else { return }
@@ -28,9 +33,10 @@ final class SequentialViewModel {
         progress = "0 / \(limit)"
         elapsedSeconds = 0
 
-        let start = Date()
+        let clock = ContinuousClock()
+        let start = clock.now
         defer {
-            elapsedSeconds = Date().timeIntervalSince(start)
+            elapsedSeconds = seconds(from: start.duration(to: clock.now))
             isLoading = false
         }
 
@@ -40,10 +46,15 @@ final class SequentialViewModel {
                 let data = try await service.fetchImageData(from: item.downloadURL)
                 images.append(LoadedImage(image: item, data: data))
                 progress = "\(index + 1) / \(limit)"
-                elapsedSeconds = Date().timeIntervalSince(start)
+                elapsedSeconds = seconds(from: start.duration(to: clock.now))
             }
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+
+    private func seconds(from duration: Duration) -> Double {
+        let components = duration.components
+        return Double(components.seconds) + (Double(components.attoseconds) / 1_000_000_000_000_000_000)
     }
 }

@@ -19,11 +19,24 @@ final class ActorCacheViewModel {
     private(set) var elapsedSeconds: Double = 0
     private(set) var errorMessage: String?
 
-    private let service = ImageService()
-    private let cache = ImageCache()
-    private let limit = 10
-    // Issue each URL N times concurrently to trigger in-flight dedup.
-    private let duplicateRequests = 3
+    private let service: any ImageServing
+    private let cache: ImageCache
+    private let limit: Int
+    private let duplicateRequests: Int
+
+    init(
+        service: any ImageServing = ImageService(),
+        cache: ImageCache? = nil,
+        limit: Int = 10,
+        duplicateRequests: Int = 3
+    ) {
+        self.service = service
+        self.cache = cache ?? ImageCache(fetchImageData: { url in
+            try await service.fetchImageData(from: url)
+        })
+        self.limit = limit
+        self.duplicateRequests = duplicateRequests
+    }
 
     func loadImages() async {
         guard !isLoading else { return }
