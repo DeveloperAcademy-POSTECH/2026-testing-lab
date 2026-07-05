@@ -3,26 +3,22 @@ import VerificationTestingLab
 
 @Suite("Experiment 6 - Test Validation Checklist")
 struct TestValidationChecklistTests {
+    let game = ThreeSixNineGame()
+    
     @Test("Mutation: replacing 9 with 8 would be caught by independent examples")
     func mutationReplacingNineWithEightIsCaught() {
-        // 1. Create the system under test once for this group of examples.
-        let game = ThreeSixNineGame()
-
-        // 2. Verify that 9 is a clap digit.
+        // 1. Verify that 9 is a clap digit.
         #expect(game.play(9) == "clap")
         #expect(game.play(99) == "clap clap")
 
-        // 3. Verify that 8 is not a clap digit.
+        // 2. Verify that 8 is not a clap digit.
         #expect(game.play(8) == "8")
         #expect(game.play(88) == "88")
     }
 
     @Test("Mutation: returning one clap for every match would be caught")
     func mutationReturningOnlyOneClapIsCaught() {
-        // 1. Create the system under test.
-        let game = ThreeSixNineGame()
-
-        // 2. Check numbers with two clap digits so "clap" is not enough.
+        // 1. Check numbers with two clap digits so "clap" is not enough.
         #expect(game.play(33) == "clap clap")
         #expect(game.play(36) == "clap clap")
         #expect(game.play(39) == "clap clap")
