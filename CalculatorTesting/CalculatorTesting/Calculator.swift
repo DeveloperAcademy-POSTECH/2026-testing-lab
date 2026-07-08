@@ -8,6 +8,15 @@
 import Foundation
 
 struct Calculator {
+    private static let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 10
+        formatter.minimumFractionDigits = 0
+        formatter.groupingSeparator = ","
+        return formatter
+    }()
+
     func calculate(lhs: Decimal, rhs: Decimal, operation: CalculatorOperation) -> Decimal? {
         switch operation {
         case .add:
@@ -32,12 +41,7 @@ struct Calculator {
 
     func string(from decimal: Decimal) -> String {
         let number = NSDecimalNumber(decimal: decimal)
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 10
-        formatter.minimumFractionDigits = 0
-        formatter.groupingSeparator = ","
-        return formatter.string(from: number) ?? number.stringValue
+        return Self.formatter.string(from: number) ?? number.stringValue
     }
 
     func decimal(from string: String) -> Decimal? {
