@@ -1,12 +1,12 @@
 //
 //  CalculatorTests.swift
-//  CalculatorTesting
+//  Calculator
 //
 //  Created by sun on 7/4/26.
 //
 
 import XCTest
-@testable import CalculatorTesting
+@testable import Calculator
 
 final class CalculatorTests: XCTestCase {
 

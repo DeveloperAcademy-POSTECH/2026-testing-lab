@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A4190C512FF78B6200B82B9A"
-               BuildableName = "CalculatorTesting.app"
-               BlueprintName = "CalculatorTesting"
-               ReferencedContainer = "container:CalculatorTesting.xcodeproj">
+               BuildableName = "Calculator.app"
+               BlueprintName = "Calculator"
+               ReferencedContainer = "container:Calculator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,8 +27,13 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <TestPlans>
+         <TestPlanReference
+            reference = "container:Calculator.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+      </TestPlans>
       <Testables>
          <TestableReference
             skipped = "NO"
@@ -36,9 +41,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A4190C5E2FF78B6300B82B9A"
-               BuildableName = "CalculatorTestingTests.xctest"
-               BlueprintName = "CalculatorTestingTests"
-               ReferencedContainer = "container:CalculatorTesting.xcodeproj">
+               BuildableName = "CalculatorXCTests.xctest"
+               BlueprintName = "CalculatorXCTests"
+               ReferencedContainer = "container:Calculator.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -49,7 +54,7 @@
                BlueprintIdentifier = "A4190C682FF78B6300B82B9A"
                BuildableName = "CalculatorTestingUITests.xctest"
                BlueprintName = "CalculatorTestingUITests"
-               ReferencedContainer = "container:CalculatorTesting.xcodeproj">
+               ReferencedContainer = "container:Calculator.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -58,9 +63,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A41915052FF9457B00B82B9A"
-               BuildableName = "CalculatorTestingSwiftTests.xctest"
-               BlueprintName = "CalculatorTestingSwiftTests"
-               ReferencedContainer = "container:CalculatorTesting.xcodeproj">
+               BuildableName = "CalculatorSwiftTests.xctest"
+               BlueprintName = "CalculatorSwiftTests"
+               ReferencedContainer = "container:Calculator.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -80,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A4190C512FF78B6200B82B9A"
-            BuildableName = "CalculatorTesting.app"
-            BlueprintName = "CalculatorTesting"
-            ReferencedContainer = "container:CalculatorTesting.xcodeproj">
+            BuildableName = "Calculator.app"
+            BlueprintName = "Calculator"
+            ReferencedContainer = "container:Calculator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -97,9 +102,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A4190C512FF78B6200B82B9A"
-            BuildableName = "CalculatorTesting.app"
-            BlueprintName = "CalculatorTesting"
-            ReferencedContainer = "container:CalculatorTesting.xcodeproj">
+            BuildableName = "Calculator.app"
+            BlueprintName = "Calculator"
+            ReferencedContainer = "container:Calculator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

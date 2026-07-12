@@ -1,131 +1,128 @@
 //
 //  CalculatorViewModelTests.swift
-//  CalculatorTesting
+//  Calculator
 //
-//  Created by sun on 7/6/26.
+//  Created by sun on 7/4/26.
 //
 
-import Testing
-@testable import CalculatorTesting
+import XCTest
+@testable import Calculator
 
-struct CalculatorViewModelTests {
+final class CalculatorViewModelTests: XCTestCase {
 
-    private let viewModel = CalculatorViewModel(logic: Calculator())
+    private var viewModel: CalculatorViewModel!
 
-    @Test
-    func numberInput() {
+    override func setUp() {
+        super.setUp()
+        viewModel = CalculatorViewModel(logic: Calculator())
+    }
+
+    override func tearDown() {
+        viewModel = nil
+        super.tearDown()
+    }
+
+    func testNumberInput() {
         viewModel.tap(.digit(1))
         viewModel.tap(.digit(2))
         viewModel.tap(.digit(3))
 
-        #expect(viewModel.displayText == "123")
+        XCTAssertEqual(viewModel.displayText, "123")
     }
 
-    @Test
-    func decimalInput() {
+    func testDecimalInput() {
         viewModel.tap(.digit(1))
         viewModel.tap(.decimal)
         viewModel.tap(.digit(5))
 
-        #expect(viewModel.displayText == "1.5")
+        XCTAssertEqual(viewModel.displayText, "1.5")
     }
 
-    @Test
-    func additionFlow() {
+    func testAdditionFlow() {
         viewModel.tap(.digit(7))
         viewModel.tap(.add)
         viewModel.tap(.digit(8))
         viewModel.tap(.equals)
 
-        #expect(viewModel.displayText == "15")
+        XCTAssertEqual(viewModel.displayText, "15")
     }
 
-    @Test
-    func subtractionFlow() {
+    func testSubtractionFlow() {
         viewModel.tap(.digit(9))
         viewModel.tap(.subtract)
         viewModel.tap(.digit(4))
         viewModel.tap(.equals)
 
-        #expect(viewModel.displayText == "5")
+        XCTAssertEqual(viewModel.displayText, "5")
     }
 
-    @Test
-    func multiplicationFlow() {
+    func testMultiplicationFlow() {
         viewModel.tap(.digit(6))
         viewModel.tap(.multiply)
         viewModel.tap(.digit(7))
         viewModel.tap(.equals)
 
-        #expect(viewModel.displayText == "42")
+        XCTAssertEqual(viewModel.displayText, "42")
     }
 
-    @Test
-    func divisionFlow() {
+    func testDivisionFlow() {
         viewModel.tap(.digit(8))
         viewModel.tap(.divide)
         viewModel.tap(.digit(2))
         viewModel.tap(.equals)
 
-        #expect(viewModel.displayText == "4")
+        XCTAssertEqual(viewModel.displayText, "4")
     }
 
-    @Test
-    func clear() {
+    func testClear() {
         viewModel.tap(.digit(9))
         viewModel.tap(.clear)
 
-        #expect(viewModel.displayText == "0")
+        XCTAssertEqual(viewModel.displayText, "0")
     }
 
-    @Test
-    func backspace() {
+    func testBackspace() {
         viewModel.tap(.digit(1))
         viewModel.tap(.digit(2))
         viewModel.tap(.digit(3))
 
         viewModel.tap(.backspace)
 
-        #expect(viewModel.displayText == "12")
+        XCTAssertEqual(viewModel.displayText, "12")
     }
 
-    @Test
-    func backspaceToZero() {
+    func testBackspaceToZero() {
         viewModel.tap(.digit(5))
         viewModel.tap(.backspace)
 
-        #expect(viewModel.displayText == "0")
+        XCTAssertEqual(viewModel.displayText, "0")
     }
 
-    @Test
-    func plusMinus() {
+    func testPlusMinus() {
         viewModel.tap(.digit(5))
         viewModel.tap(.plusMinus)
 
-        #expect(viewModel.displayText == "-5")
+        XCTAssertEqual(viewModel.displayText, "-5")
     }
 
-    @Test
-    func percent() {
+    func testPercent() {
         viewModel.tap(.digit(5))
         viewModel.tap(.digit(0))
         viewModel.tap(.percent)
 
-        #expect(viewModel.displayText == "0.5")
+        XCTAssertEqual(viewModel.displayText, "0.5")
     }
 
-    @Test
-    func divisionByZeroShowsError() {
+    func testDivisionByZeroShowsError() {
         viewModel.tap(.digit(8))
         viewModel.tap(.divide)
         viewModel.tap(.digit(0))
         viewModel.tap(.equals)
 
-        #expect(viewModel.displayText == "Error")
+        XCTAssertEqual(viewModel.displayText, "Error")
     }
 
-    @Test
-    func digitAfterEqualsStartsNewCalculation() {
+    func testDigitAfterEqualsStartsNewCalculation() {
         viewModel.tap(.digit(2))
         viewModel.tap(.add)
         viewModel.tap(.digit(3))
@@ -133,6 +130,6 @@ struct CalculatorViewModelTests {
 
         viewModel.tap(.digit(7))
 
-        #expect(viewModel.displayText == "7")
+        XCTAssertEqual(viewModel.displayText, "7")
     }
 }

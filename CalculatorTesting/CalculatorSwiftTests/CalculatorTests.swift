@@ -1,13 +1,13 @@
 //
 //  CalculatorTests.swift
-//  CalculatorTesting
+//  Calculator
 //
 //  Created by sun on 7/6/26.
 //
 
 import Foundation
 import Testing
-@testable import CalculatorTesting
+@testable import Calculator
 
 struct CalculatorTests {
 

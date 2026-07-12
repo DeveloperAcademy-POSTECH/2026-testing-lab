@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "D3708B6B-18BC-4C4F-B15D-57B3B017D23B",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Calculator.xcodeproj",
+      "identifier" : "A4190C512FF78B6200B82B9A",
+      "name" : "Calculator"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Calculator.xcodeproj",
+        "identifier" : "A4190C5E2FF78B6300B82B9A",
+        "name" : "CalculatorXCTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Calculator.xcodeproj",
+        "identifier" : "A41915052FF9457B00B82B9A",
+        "name" : "CalculatorSwiftTests"
+      }
+    }
+  ],
+  "version" : 1
+}
