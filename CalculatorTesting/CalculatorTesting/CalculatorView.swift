@@ -10,7 +10,7 @@ import SwiftUI
 struct CalculatorView: View {
     @State private var viewModel = CalculatorViewModel()
 
-    private let rows: [[CalculatorButton]] = [
+    private let rows: [[CalculatorButtonType]] = [
         [.backspace, .clear, .percent, .divide],
         [.digit(7), .digit(8), .digit(9), .multiply],
         [.digit(4), .digit(5), .digit(6), .subtract],

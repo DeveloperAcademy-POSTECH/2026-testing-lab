@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalculatorButtonView: View {
-    let button: CalculatorButton
+    let button: CalculatorButtonType
     let action: () -> Void
 
     var body: some View {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum CalculatorButton: Hashable {
+enum CalculatorButtonType: Hashable {
     case digit(Int)
     case decimal
     case equals

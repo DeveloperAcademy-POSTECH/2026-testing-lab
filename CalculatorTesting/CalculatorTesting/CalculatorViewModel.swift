@@ -25,7 +25,7 @@ final class CalculatorViewModel {
         self.logic = logic
     }
 
-    func tap(_ button: CalculatorButton) {
+    func tap(_ button: CalculatorButtonType) {
         if case let .digit(number) = button {
             inputDigit(number)
             return
