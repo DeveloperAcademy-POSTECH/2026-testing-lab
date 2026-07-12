@@ -9,6 +9,7 @@ import Foundation
 import Testing
 @testable import Calculator
 
+@Suite
 struct CalculatorTests {
 
     private let logic = Calculator()

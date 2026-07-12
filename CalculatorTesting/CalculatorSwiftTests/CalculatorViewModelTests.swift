@@ -8,6 +8,7 @@
 import Testing
 @testable import Calculator
 
+@Suite
 struct CalculatorViewModelTests {
 
     private let viewModel = CalculatorViewModel(logic: Calculator())
