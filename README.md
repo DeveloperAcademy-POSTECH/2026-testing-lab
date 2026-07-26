@@ -1,5 +1,12 @@
 # Testing Lab (2026)
 
+## Guardians of Testing
+
+| Name | GitHub | Challenge Response |
+| --- | --- | --- |
+| Juni | [@dudwntjs](https://github.com/dudwntjs) | Refactor the existing XCTest-based unit tests using Swift Testing to make the test suite easier to read and maintain. |
+| Sammy | [@LeeDayday](https://github.com/LeeDayday) | Investigate how tests can be verified using Apple's Swift Testing framework. The goal is not only to write passing tests, but to ask whether those tests would fail when the production code is wrong. |
+
 ## Who can apply to the lab?
 Anyone who is interested in exploring ideas through test code - including Swift Testing - is welcome to apply, regardless of experience level.
 
